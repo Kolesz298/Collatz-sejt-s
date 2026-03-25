@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collatz-sejtés Projekt</title>
+    <!-- Itt linkeljük be a CSS-t -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 class="main-title">Collatz-sejtés Projekt</h1>
+
+    <div class="container">
+ <h2>A sejtés születése: 1932–1937 🏛️</h2>
+    <p>Minden egy fiatal német egyetemistával, **Lothar Collatzzal** kezdődött a Hamburgi Egyetemen.</p>
+    
+    <div style="text-align: left; line-height: 1.6;">
+        <p><strong>1. Az ötlet (1932):</strong> Collatz még hallgató volt, amikor elkezdett gondolkodni a számok "gráfjain". Nem egyből a 3x+1-et találta ki, hanem azt figyelte, hogyan mozognak a számok, ha bizonyos szabályokat követnek. Olyan függvényeket keresett, amik "összehúzzák" a végtelent egyetlen pontba.</p>
+
+        <p><strong>2. A terjedés (1950-es évek):</strong> Érdekesség, hogy Collatz **soha nem publikálta** hivatalosan a sejtést évtizedekig! Egyszerűen csak elmesélte más matematikusoknak a konferenciákon és kávéházakban. A probléma annyira "fertőző" volt, hogy szájról szájra terjedt az egyetemek között.</p>
+
+        <p><strong>3. A "Syracuse-probléma":</strong> Az 1960-as években a Syracuse-i Egyetemen annyira rákattantak a professzorok, hogy egy ideig erről az egyetemről nevezték el. Később kiderült, hogy Shizuo Kakutani, egy japán matematikus is próbálta megoldani, ezért hívják néha Kakutani-problémának is.</p>
+
+        <p><strong>4. A jutalom:</strong> Ahogy telt az idő, a sejtés egyre nagyobb hírnevet szerzett. Ma már ott tartunk, hogy ha valaki bebizonyítaná, az a matematika történetének egyik legnagyobb szenzációja lenne. Bryan Thwaites matematikus például 1000 fontot (kb. 450.000 Ft) ígért annak, aki megoldja.</p>
+    </div>
+
+    <p style="margin-top: 20px; font-weight: bold; color: #764ba2;">
+        Több mint 80 év telt el, és még mindig senki sem tudja, hogy VAN-E olyan szám, ami elkerüli az 1-et és a végtelenbe szökik.
+    </p>
+
+        <h2>A matematika legnagyobb rejtélye 📜</h2>
+        <p>A <strong>Collatz-sejtés</strong> (vagy 3n+1 probléma) 1937 óta megoldatlan.</p>
+        <blockquote>
+            "A matematika még nem áll készen az ilyen problémákra."<br>
+            
+        </blockquote>
+    </div>
+
+    <div class="container">
+        <h2>Így működik a program ⚙️</h2>
+        <p>Az alábbi ábra szemlélteti a logikai utat:</p>
+        <svg class="flowchart-svg" viewBox="0 0 400 580" xmlns="http://www.w3.org">
+            <defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#666" /></marker></defs>
+            <rect x="140" y="10" width="120" height="40" rx="20" fill="#e1bee7" stroke="#9c27b0" stroke-width="2""")/>>
+            <text x="200" y="35" text-anchor="middle" font-size="14">Főprogram</text>
+            <line x1="200" y1="50" x2="200" y2="70" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)""")/>>
+            <rect x="140" y="70" width="120" height="30" fill="#fff9c4" stroke="#fbc02d" stroke-width="2""")/>>
+            <text x="200" y="90" text-anchor="middle" font-size="12">x egész</text>
+            <line x1="200" y1="100" x2="200" y2="120" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)""")/>>
+            <polygon points="130,120 270,120 250,155 110,155" fill="#c8e6c9" stroke="#388e3c" stroke-width="2""")/>>
+            <text x="190" y="142" text-anchor="middle" font-size="12">Be: x</text>
+            <line x1="190" y1="155" x2="190" y2="180" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)""")/>>
+            <rect x="120" y="180" width="140" height="40" rx="5" fill="#ffe0b2" stroke="#f57c00" stroke-width="2""")/>>
+            <text x="190" y="205" text-anchor="middle" font-size="14" font-weight="bold">Ciklus: true</text>
+            <line x1="190" y1="220" x2="190" y2="250" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)""")/>>
+            <polygon points="190,250 280,290 190,330 100,290" fill="#f8bbd0" stroke="#c2185b" stroke-width="2""")/>>
+            <text x="190" y="295" text-anchor="middle" font-size="11">x % 2 == 0</text>
+            <line x1="280" y1="290" x2="310" y2="290" stroke="#666" /><line x1="310" y1="290" x2="310" y2="340" marker-end="url(#arrowhead)" stroke="#666" />
+            <text x="320" y="315" font-size="10">Igaz</text>
+            <line x1="100" y1="290" x2="70" y2="290" stroke="#666" /><line x1="70" y1="290" x2="70" y2="340" marker-end="url(#arrowhead)" stroke="#666" />
+            <text x="40" y="315" font-size="10">Hamis</text>
+            <rect x="270" y="340" width="80" height="35" fill="#fff9c4" stroke="#fbc02d" stroke-width="2""")/>>
+            <text x="310" y="362" text-anchor="middle" font-size="11">x = x / 2</text>
+            <rect x="30" y="340" width="80" height="35" fill="#fff9c4" stroke="#fbc02d" stroke-width="2""")/>>
+            <text x="70" y="362" text-anchor="middle" font-size="11">x = 3*x + 1</text>
+            <polygon points="130,420 270,420 250,455 110,455" fill="#c8e6c9" stroke="#388e3c" stroke-width="2""")/>>
+            <text x="190" y="442" text-anchor="middle" font-size="12">Ki: x</text>
+            <path d="M70 375 V400 H310 V375" fill="none" stroke="#666" stroke-width="2""")/>><line x1="190" y1="400" x2="190" y2="420" marker-end="url(#arrowhead)" stroke="#666" stroke-width="2""")/>>
+            <path d="M190 455 V480 H360 V190 H260" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)""")/>>
+        </svg>
+        
+    </div>
+    <div class="robot-guide">
+    <h3>🤖 Hogyan dolgozik a gép?</h3>
+    
+    <div class="step-card">
+        <div class="step-icon bg-violet">1</div>
+        <div class="step-text">
+            <strong>Az előkészületek:</strong>
+            <p>A lila <em>Főprogram</em> a start gomb. Az <em>x egész</em> a robot memóriájában egy kis fiók, a <em>Be: x</em> pedig az a pont, ahol megkérdezi tőled: "Mivel kezdjünk?"</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-icon bg-orange">2</div>
+        <div class="step-text">
+            <strong>A végtelen körforgás:</strong>
+            <p>A narancssárga <em>Ciklus: true</em> doboz egy mókuskerék. Azt mondja a robotnak: "Csináld újra és újra, amíg világ a világ!"</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-icon bg-pink">3</div>
+        <div class="step-text">
+            <strong>A nagy döntés:</strong>
+            <p>A rózsaszín rombusz a gép agya. Itt dől el minden: ha a szám <strong>PÁROS</strong>, a robot felezi; ha <strong>PÁRATLAN</strong>, megháromszorozza és hozzáad egyet.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-icon bg-green">4</div>
+        <div class="step-text">
+            <strong>Az eredmény megmutatása:</strong>
+            <p>A zöld doboznál a robot gyorsan kiírja az új számot (<em>Ki: x</em>), hogy te is lásd, éppen hol tart a folyamat.</p>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-icon bg-gray">5</div>
+        <div class="step-text">
+            <strong>A visszakanyarodás:</strong>
+            <p>A legalsó nyíl visszatereli a robotot a startvonalra, hogy az új számmal kezdje elölről a kérdezgetést.</p>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <h2>Interaktív Kalkulátor 🏎️</h2>
+        <div class="input-group">
+            <input type="number" id="startNumber" placeholder="Szám..." min="1">
+            <button onclick="szamol()">Számolás indítása</button>
+        </div>
+        <p>Lépések száma: <span id="step-count">0</span></p>
+        <div id="sequence" class="sequence-box">A sorozat itt fog megjelenni...</div>
+        <div class="speed-container">
+            <label>Sebesség szabályozása</label>
+            <input type="range" id="speedRange" min="1" max="500" value="100">
+            <div class="speed-labels"><span>🏎️ Gyors</span><span>🐢 Lassú</span></div>
+        </div>
+    </div>
+
+    <!-- Itt linkeljük be a JavaScriptet -->
+    <script src="script.js"></script>
+</body>
+</html>
